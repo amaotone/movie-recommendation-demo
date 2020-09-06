@@ -9,7 +9,7 @@ import scrapy
 class ReviewItem(scrapy.Item):
     point = scrapy.Field()
     movie_id = scrapy.Field()
-    user_id = scrpay.Field()
+    user_id = scrapy.Field()
 
 
 class UserItem(scrapy.Item):
