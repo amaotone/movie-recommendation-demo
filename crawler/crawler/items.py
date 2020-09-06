@@ -6,7 +6,17 @@
 import scrapy
 
 
-class CrawlerItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class ReviewItem(scrapy.Item):
+    point = scrapy.Field()
+    movie_id = scrapy.Field()
+    user_id = scrpay.Field()
+
+
+class UserItem(scrapy.Item):
+    user_id = scrapy.Field()
+    name = scrapy.Field()
+
+
+class MovieItem(scrapy.Item):
+    movie_id = scrapy.Field()
+    title = scrapy.Field()
