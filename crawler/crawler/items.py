@@ -7,16 +7,16 @@ import scrapy
 
 
 class ReviewItem(scrapy.Item):
-    point = scrapy.Field()
-    movie_id = scrapy.Field()
-    user_id = scrapy.Field()
+    point = scrapy.Field(serializer=int)
+    movie_id = scrapy.Field(serializer=int)
+    user_id = scrapy.Field(serializer=int)
 
 
 class UserItem(scrapy.Item):
-    user_id = scrapy.Field()
-    name = scrapy.Field()
+    user_id = scrapy.Field(serializer=int)
+    name = scrapy.Field(serializer=str)
 
 
 class MovieItem(scrapy.Item):
-    movie_id = scrapy.Field()
-    title = scrapy.Field()
+    movie_id = scrapy.Field(serializer=int)
+    title = scrapy.Field(serializer=str)
