@@ -8,6 +8,9 @@ authors = ["Amane Suzuki <amane.suzu@gmail.com>"]
 python = "^3.8"
 scrapy = "^2.3.0"
 jupyter = "^1.0.0"
+scikit-learn = "^0.23.2"
+streamlit = "^0.69.1"
+tqdm = "^4.50.2"
 
 [tool.poetry.dev-dependencies]
 black = "^20.8b1"
