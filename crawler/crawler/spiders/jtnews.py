@@ -12,7 +12,7 @@ import logging
 class JtnewsSpider(CrawlSpider):
     name = "jtnews"
     allowed_domains = ["www.jtnews.jp"]
-    start_urls = ["https://www.jtnews.jp/cgi-bin_o/revlist.cgi?PAGE_NO=1"]
+    start_urls = ["https://www.jtnews.jp/cgi-bin/revlist.cgi?PAGE_NO=1"]
 
     rules = (
         Rule(
@@ -25,7 +25,7 @@ class JtnewsSpider(CrawlSpider):
             follow=True,
         ),
         Rule(
-            LinkExtractor(allow=r"revper\.cgi\?&?PAGE_NO=\d+&REVPER_NO=\d+&TYPE=1$"),
+            LinkExtractor(allow=r"revper\.cgi\?&?PAGE_NO=\d+&REVPER_NO=\d+&TYPE=2$"),
             callback="parse_review",
         ),
     )
@@ -34,20 +34,13 @@ class JtnewsSpider(CrawlSpider):
     movie_pattern = re.compile(r"TITLE_NO=(?P<movie_id>\d+)")
 
     def parse_user(self, response):
-        try:
-            user_table = response.css("table")[-1]
-            for link in user_table.css("a"):
-                user = UserItem()
-                user_url = link.css("a::attr(href)").get()
-                user["user_id"] = int(self.user_pattern.findall(user_url)[0])
-                user["name"] = link.css("a::text").get()
-                yield user
-
-        except:
-            self.log(f"parse failed: {response.url}", level=logging.ERROR)
-            yield scrapy.Request(
-                response.url, callback=self.parse_user, dont_filter=True
-            )
+        user_table = response.css("table.hover-table")
+        for link in user_table.css("a"):
+            user = UserItem()
+            user_url = link.css("a::attr(href)").get()
+            user["user_id"] = int(self.user_pattern.findall(user_url)[0])
+            user["name"] = link.css("a::text").get()
+            yield user
 
     def parse_review(self, response):
         # レビューの表は15番目で、1行目はヘッダーなので省く
