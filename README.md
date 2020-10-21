@@ -2,8 +2,6 @@
 
 社内勉強会で発表した[Scrapyとscikit-learn、Streamlitで作るかんたん機械学習アプリケーション](https://speakerdeck.com/amaotone/making-ml-app-with-scrapy-scikit-learn-and-streamlit)で作成したデモアプリです。
 
-<script async class="speakerdeck-embed" data-id="a46ea786035f44fcbefc4c4bf323c704" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
-
 ## Usage
 
 Python3.7とPoetryが必要です。
