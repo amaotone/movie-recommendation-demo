@@ -1,4 +1,5 @@
 *.csv
+*.pkl
 
 ### https://raw.github.com/github/gitignore//Python.gitignore
 
